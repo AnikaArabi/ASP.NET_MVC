@@ -1,0 +1,11 @@
+﻿@model EmployeeGradeTrackingApplication.Models.DesignationHistory
+
+<div class="form-group row mb-1">
+    @Html.LabelFor(x => x.DesignationId, new { @class = "col-form-label col-2" })
+    <div class="col-4">
+        @Html.DropDownListFor(x => x.DesignationId, new SelectList(ViewBag.Designations, "DesignationId", "DesignationName"), "Select", new { @class = "form-select select" })
+        @Html.ValidationMessageFor(x => x.DesignationId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+

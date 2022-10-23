@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EmployeeGradeTrackingApplication.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-12">
+        <h3 class="display-2" style="background-color:teal; color:white; text-align:center; border:outset;">Employee with Designations</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-striped table-bordered table-success">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(b => b.Picture)</th>
+                    <th>@Html.DisplayNameFor(b => b.EmployeeName)</th>
+                    <th>@Html.DisplayNameFor(b => b.JoiningDate)</th>
+                    <th>@Html.DisplayNameFor(b => b.Email)</th>
+                    <th>@Html.DisplayNameFor(b => b.Phone)</th>
+                    <th>@Html.DisplayNameFor(b => b.IsWorking)</th>
+                    <th>@Html.DisplayNameFor(b => b.Department.DepartmentName)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td style="width:70px" class="text-center">
+                            <img src="~/Uploads/@x.Picture" style="width:40px" class="rounded-circle" />
+                        </td>
+                        <td>@Html.DisplayFor(t => x.EmployeeName)</td>
+                        <td>@Html.DisplayFor(t => x.JoiningDate)</td>
+                        <td>@Html.DisplayFor(t => x.Email)</td>
+                        <td>@Html.DisplayFor(t => x.Phone)</td>
+                        <td>@Html.DisplayFor(t => x.IsWorking)</td>
+                        <td>@Html.DisplayFor(t => x.Department.DepartmentName)</td>
+                    </tr>
+                    <tr>
+                        <td class="border-end-0">&nbsp;</td>
+                        <td colspan="5" class="border-start-0">
+                            <h3>Designation</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Designation ID</th>
+                                        <th>Designation Name</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var y in x.DesignationHistories)
+                                    {
+                                        <tr>
+                                            <td>@y.Designation.DesignationId</td>
+                                            <td>@y.Designation.DesignationName</td>
+
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

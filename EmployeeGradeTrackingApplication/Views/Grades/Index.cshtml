@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EmployeeGradeTrackingApplication.Models.Grade>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+       <h3 class="display-2" style="background-color:teal; color:white; text-align:center; border:outset;">Grades</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add New", "Create", "Grades", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-striped table-bordered table-success">
+            <thead class="bg-light text-bg-light text-success">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.GradeName)</th>
+                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(x => c.GradeName)</td>
+                    
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Grades", new { id = c.GradeId }, new { @class = "btn btn-secondary btn-sm" })
+                        <a href="@Url.Action("Delete", "Grades", new {id=c.GradeId})" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

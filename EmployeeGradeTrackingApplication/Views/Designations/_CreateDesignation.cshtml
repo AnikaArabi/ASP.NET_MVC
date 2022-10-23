@@ -1,0 +1,26 @@
+﻿@model EmployeeGradeTrackingApplication.Models.Designation
+@using (Ajax.BeginForm("CreateDesignation", "Designations", new { }, new AjaxOptions
+{
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "alert",
+    LoadingElementId = "spinner",
+    OnSuccess = "onSuccess"
+}, new { id = "f" }))
+{
+    
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.DesignationName, new { @class = "col-form-label col-form-label-sm col-2" })
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.DesignationName, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.DesignationName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row mb-1">
+
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+}
